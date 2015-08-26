@@ -1,0 +1,19 @@
+<section data-ng-controller="TransactionTypesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Transaction types</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="transactionType in transactionTypes" data-ng-href="#!/transaction-types/{{transactionType._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="transactionType.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="transactionType.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="transactionType.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!transactionTypes.$resolved || transactionTypes.length">
+    	No Transaction types yet, why don't you <a href="/#!/transaction-types/create">create one</a>?
+    </div>
+</section>

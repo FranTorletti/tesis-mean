@@ -1,0 +1,19 @@
+<section data-ng-controller="ServiceTypesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Service types</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="serviceType in serviceTypes" data-ng-href="#!/service-types/{{serviceType._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="serviceType.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="serviceType.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="serviceType.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!serviceTypes.$resolved || serviceTypes.length">
+    	No Service types yet, why don't you <a href="/#!/service-types/create">create one</a>?
+    </div>
+</section>

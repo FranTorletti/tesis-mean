@@ -1,0 +1,19 @@
+<section data-ng-controller="ResourceOriginsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Resource origins</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="resourceOrigin in resourceOrigins" data-ng-href="#!/resource-origins/{{resourceOrigin._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="resourceOrigin.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="resourceOrigin.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="resourceOrigin.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!resourceOrigins.$resolved || resourceOrigins.length">
+    	No Resource origins yet, why don't you <a href="/#!/resource-origins/create">create one</a>?
+    </div>
+</section>

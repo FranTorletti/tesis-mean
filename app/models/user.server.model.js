@@ -54,6 +54,22 @@ var UserSchema = new Schema({
 		required: 'Please fill in a username',
 		trim: true
 	},
+	document_type : {
+		type: String,
+		required: 'Please fill a document type'
+		default: 'DNI',
+		enum: ['DU','CI','LE','LC','CI-PFA','PASAPORTE']
+	},
+	document: {
+		type: String,
+		unique: 'testing error message',
+		required: 'Please fill in a document',
+		trim: true
+	},
+	services: [{
+			type: Schema.ObjectId,
+			ref: 'Service'
+	}],
 	password: {
 		type: String,
 		default: '',

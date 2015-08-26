@@ -10,20 +10,26 @@ var mongoose = require('mongoose'),
  * Resource origin Schema
  */
 var ResourceOriginSchema = new Schema({
-	name: {
+	code: {
 		type: String,
 		default: '',
-		required: 'Please fill Resource origin name',
+		required: 'Please fill Resource origin code',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	descrition: {
+		type: String,
+		default: '',
+		required: 'Please fill Resource origin descrition'
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+	note: {
+		type: String,
+		default: '',
+		required: 'Please fill Resource origin note'
+	},
+	services: [{
+			type: Schema.ObjectId,
+			ref: 'Service'
+	}]
 });
 
 mongoose.model('ResourceOrigin', ResourceOriginSchema);

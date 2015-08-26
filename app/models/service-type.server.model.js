@@ -10,20 +10,36 @@ var mongoose = require('mongoose'),
  * Service type Schema
  */
 var ServiceTypeSchema = new Schema({
-	name: {
+	code: {
 		type: String,
 		default: '',
-		required: 'Please fill Service type name',
+		required: 'Please fill Service Type code',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	descrition: {
+		type: String,
+		default: '',
+		required: 'Please fill Service Type descrition'
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+	note: {
+		type: String,
+		default: '',
+		required: 'Please fill Service Type note'
+	},
+	retention_of_faculty: {
+		type: Number,
+		default: 0,
+		required: 'Please fill Service Type retention of faculty'
+	},
+	retention_of_university: {
+		type: Number,
+		default: 0,
+		required: 'Please fill Service Type retention of faculty'
+	},
+	services: [{
+			type: Schema.ObjectId,
+			ref: 'Service'
+	}]
 });
 
 mongoose.model('ServiceType', ServiceTypeSchema);

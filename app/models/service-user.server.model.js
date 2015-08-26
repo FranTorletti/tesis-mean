@@ -15,10 +15,10 @@ var ServiceUserSchema = new Schema({
 		default: '',
 		required: 'Please fill Service user name',
 		trim: true
-	},
-	created: {
-		type: Date,
-		default: Date.now
+	}
+	service: {
+		type: Schema.ObjectId,
+		ref: 'Service'
 	},
 	user: {
 		type: Schema.ObjectId,

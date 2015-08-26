@@ -10,20 +10,44 @@ var mongoose = require('mongoose'),
  * Service Schema
  */
 var ServiceSchema = new Schema({
+	code: {
+		type: String,
+		default: '',
+		required: 'Please fill Service code',
+		trim: true
+	},
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Service name',
-		trim: true
+		required: 'Please fill Service name'
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	descrition: {
+		type: String,
+		default: '',
+		required: 'Please fill Service descrition'
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+	status : {
+		type: String,
+		trim:true,
+		default: 'WAITING',
+		enum: ['WAITING','DISCART','ACCEPTED','COMPLETED','CANCELLED']
+	},
+	dependence: {
+			type: Schema.ObjectId,
+			ref: 'Dependence'
+	},
+	service_type: {
+			type: Schema.ObjectId,
+			ref: 'ServiceType'
+	},
+	resource_origin: {
+			type: Schema.ObjectId,
+			ref: 'ResourceOrigin'
+	},
+	services_user: [{
+				type: Schema.ObjectId,
+				ref: 'ServiceUser'
+	}]
 });
 
 mongoose.model('Service', ServiceSchema);

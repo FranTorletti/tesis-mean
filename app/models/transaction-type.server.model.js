@@ -16,13 +16,16 @@ var TransactionTypeSchema = new Schema({
 		required: 'Please fill Transaction type name',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	descrition: {
+		type: String,
+		default: '',
+		required: 'Please fill TransactionType descrition'
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
+	type : {
+		type: String,
+		trim:true,
+		required: 'Please fill TransactionType type',	
+		enum: ['INGRESS','EGRESS']
 	}
 });
 

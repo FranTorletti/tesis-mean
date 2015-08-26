@@ -10,20 +10,21 @@ var mongoose = require('mongoose'),
  * Dependence Schema
  */
 var DependenceSchema = new Schema({
-	name: {
+	code: {
 		type: String,
 		default: '',
-		required: 'Please fill Dependence name',
+		required: 'Please fill Dependence code',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	descrition: {
+		type: String,
+		default: '',
+		required: 'Please fill Dependence descrition'
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+	services: [{
+			type: Schema.ObjectId,
+			ref: 'Service'
+	}]
 });
 
 mongoose.model('Dependence', DependenceSchema);

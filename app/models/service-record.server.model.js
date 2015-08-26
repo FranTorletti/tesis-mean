@@ -10,19 +10,23 @@ var mongoose = require('mongoose'),
  * Service record Schema
  */
 var ServiceRecordSchema = new Schema({
-	name: {
+	code: {
 		type: String,
 		default: '',
-		required: 'Please fill Service record name',
+		required: 'Please fill ServiceRecord code',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	dependence: {
+			type: Schema.ObjectId,
+			ref: 'Dependence'
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
+	service_type: {
+			type: Schema.ObjectId,
+			ref: 'ServiceType'
+	},
+	resource_origin: {
+			type: Schema.ObjectId,
+			ref: 'ResourceOrigin'
 	}
 });
 

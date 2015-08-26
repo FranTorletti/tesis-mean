@@ -56,7 +56,7 @@ var UserSchema = new Schema({
 	},
 	document_type : {
 		type: String,
-		required: 'Please fill a document type'
+		required: 'Please fill a document type',
 		default: 'DNI',
 		enum: ['DU','CI','LE','LC','CI-PFA','PASAPORTE']
 	},

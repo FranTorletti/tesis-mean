@@ -15,7 +15,7 @@ var ServiceUserSchema = new Schema({
 		default: '',
 		required: 'Please fill Service user name',
 		trim: true
-	}
+	},
 	service: {
 		type: Schema.ObjectId,
 		ref: 'Service'

@@ -30,11 +30,44 @@
 	<meta name="twitter:description" content="{{description}}">
 	<meta name="twitter:url" content="{{url}}">
 	<meta name="twitter:image" content="/img/brand/logo.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/lib/bootstrap/image/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/lib/bootstrap/image/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/lib/bootstrap/image/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../image/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" href="http://optimisticdesigns.herokuapp.com/landerv2/image/favicon.ico">
+    <!--/ END META SECTION -->
+
+    <!-- START STYLESHEETS -->
+    <!-- Plugins stylesheet : optional -->
+    <!--/ Plugins stylesheet : optional -->
+
+    <!-- Application stylesheet : mandatory -->
+    <link rel="stylesheet" href="/lib/bootstrap/stylesheet/bootstrap.css">
+    <link rel="stylesheet" href="/lib/bootstrap/stylesheet/layout.css">
+    <link rel="stylesheet" href="/lib/bootstrap/stylesheet/uielement.css">
+    <!--/ Application stylesheet -->
+
+    <!-- Theme stylesheet -->
+	<link rel="stylesheet" href="/lib/bootstrap/stylesheet/themes/theme.css">
+    <!--/ Theme stylesheet -->
+
+    <!-- modernizr script -->
+    <script type="text/javascript" src="/lib/bootstrap/plugins/modernizr/js/modernizr.js"></script>
+    <!--/ modernizr script -->
+    <!-- END STYLESHEETS -->
+
+    <!-- Theme stylesheet : optional -->
+    <link rel="stylesheet" href="/lib/bootstrap/stylesheet/themes/layouts/fixed-header.css">
+
+    <!--link rel="stylesheet" href="/lib/bootstrap/stylesheet/uielement.css"-->
 
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 	<!--Application CSS Files-->
+	
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 
 	<!-- HTML5 Shim -->
@@ -43,14 +76,20 @@
 	<![endif]-->
 </head>
 
-<body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
-		</section>
-	</section>
+<body class="ng-cloak pace-done">
+	<header data-ng-include="'/modules/core/views/header.client.view.html'" id="header" class="navbar"></header>
 
+	<!-- START Template Sidebar (Left) -->
+	<aside data-ng-include="'/modules/core/views/sidebar.client.view.html'" class="sidebar sidebar-left sidebar-menu">
+	</aside>
+	<!--/ END Template Sidebar (right) -->
+	
+	<section id="main" role="main">
+		<div class="container-fluid">
+			{% block content %}{% endblock %}
+		</div>
+	</section>
+	
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};

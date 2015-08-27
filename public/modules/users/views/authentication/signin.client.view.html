@@ -1,45 +1,55 @@
-<section class="row" data-ng-controller="AuthenticationController">
-	<h3 class="col-md-12 text-center">Sign in using your social accounts</h3>
-	<div class="col-md-12 text-center">
-		<a href="/auth/facebook" class="undecorated-link">
-			<img src="/modules/users/img/buttons/facebook.png">
-		</a>
-		<a href="/auth/twitter" class="undecorated-link">
-			<img src="/modules/users/img/buttons/twitter.png">
-		</a>
-		<a href="/auth/google" class="undecorated-link">
-			<img src="/modules/users/img/buttons/google.png">
-		</a>
-		<a href="/auth/linkedin" class="undecorated-link">
-			<img src="/modules/users/img/buttons/linkedin.png">
-		</a>
-		<a href="/auth/github" class="undecorated-link">
-			<img src="/modules/users/img/buttons/github.png">
-		</a>
-	</div>
-	<h3 class="col-md-12 text-center">Or with your account</h3>
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
-		<form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
-			<fieldset>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-primary">Sign in</button>&nbsp; or&nbsp;
-					<a href="/#!/signup">Sign up</a>
-				</div>
-				<div class="forgot-password">
-					<a href="/#!/password/forgot">Forgot your password?</a>
-				</div>
-				<div data-ng-show="error" class="text-center text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-</section>
+<!-- START row -->
+<div class="row" data-ng-controller="AuthenticationController">
+    <div class="col-lg-4 col-lg-offset-4">
+        <!-- Brand -->
+        <div class="text-center" style="margin-bottom:40px;">
+            <span class="logo-figure inverse"></span>
+            <span class="logo-text inverse"></span>
+            <h5 class="semibold text-muted mt-5">Login to your account.</h5>
+        </div>
+        <!--/ Brand -->
+
+        <hr><!-- horizontal line -->
+
+        <!-- Login form -->
+        <form data-ng-submit="signin()" class="panel" name="form-login" style="position: relative;border-width: 1px;border-color: #cfd9db;border-bottom-width: 2px;border-bottom-color: #c0cdd1;border-radius: 0px;-webkit-box-shadow: none;box-shadow: none;">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="form-stack has-icon">
+                        <input data-ng-model="credentials.email" name="username" type="email" class="form-control input-lg" placeholder="Email" required>
+                        <i class="ico-user2 form-control-icon"></i>
+                    </div>
+                    <div class="form-stack has-icon">
+                        <input data-ng-model="credentials.password" name="password" type="password" class="form-control input-lg" placeholder="Password" required>
+                        <i class="ico-lock2 form-control-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Error container -->
+                <div id="error-container"class="mb15"></div>
+                <!--/ Error container -->
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="checkbox custom-checkbox">  
+                                <input type="checkbox" name="remember" id="remember" value="1">  
+                                <label for="remember">&nbsp;&nbsp;Remember me</label>   
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-right checkbox">
+                            <a href="/#!/password/forgot">Lost password?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group nm">
+                    <button type="submit" class="btn btn-block btn-success"><span class="semibold">Sign In</span></button>
+                </div>
+            </div>
+        </form>
+        <!-- Login form -->
+
+        <hr><!-- horizontal line -->
+    </div>
+</div>
+<!--/ END row -->

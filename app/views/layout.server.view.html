@@ -81,14 +81,6 @@
         </aside>
         <!--/ END Template Sidebar (Left) -->
 
-        <!-- START Template Main -->
-        <section id="main" role="main">
-			<div class="container-fluid">
-				{% block content %}{% endblock %}
-			</div>
-		</section>
-        <!--/ END Template Main -->
-
         <!-- START Template Footer -->
 	    <footer id="footer">
 	        <!-- START container-fluid -->
@@ -109,6 +101,14 @@
 	        <!--/ END container-fluid -->
 	    </footer>
 	    <!--/ END Template Footer -->
+
+        <!-- START Template Main -->
+        <section id="main" role="main">
+			<div class="container-fluid">
+				{% block content %}{% endblock %}
+			</div>
+		</section>
+        <!--/ END Template Main -->
 
         <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
         <!-- Application and vendor script : mandatory -->

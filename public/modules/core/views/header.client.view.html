@@ -190,7 +190,14 @@
 	        <!--/ Notification dropdown -->
 			
 	        <!-- Profile dropdown -->
-	        <li class="dropdown profile">
+	        <li data-ng-hide="authentication.user" ui-route="/signin" ng-class="{active: $uiRoute}">
+	        	<a href="/#!/signin" class="dropdown-toggle" data-toggle="dropdown">
+	                <span class="meta">
+	                    <span class="text hidden-xs hidden-sm pl5">Login</span>
+	                </span>
+	            </a>
+	        </li>
+	        <li class="dropdown profile" data-ng-show="authentication.user">
 	            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
 	                <span class="meta">
 	                    <span class="avatar"><img src="/lib/bootstrap/image/avatar/avatar7.jpg" class="img-circle" alt="" /></span>
@@ -206,15 +213,6 @@
 	            </ul>
 	        </li>
 	        <!-- Profile dropdown -->
-			<!-- Offcanvas right This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
-	        <li class="navbar-main">
-	            <a href="javascript:void(0);" data-toggle="sidebar" data-direction="rtl" rel="tooltip" title="Feed / contact sidebar">
-	                <span class="meta">
-	                    <span class="icon"><i class="ico-users3"></i></span>
-	                </span>
-	            </a>
-	        </li>
-	        <!--/ Offcanvas right -->
 	      
 	    </ul>
 	    <!--/ END Right nav -->

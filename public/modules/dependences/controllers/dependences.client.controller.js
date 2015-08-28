@@ -7,20 +7,43 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 
 		// Create new Dependence
 		$scope.create = function() {
-			// Create new Dependence object
-			var dependence = new Dependences ({
-				name: this.name
-			});
+			if (validForm()) {
+				// Create new Dependence object
+				var dependence = new Dependences ({
+					code: this.code,
+					description: this.description
+				});
 
-			// Redirect after save
-			dependence.$save(function(response) {
-				$location.path('dependences/' + response._id);
+				// Redirect after save
+				dependence.$save(function(response) {
+					$location.path('dependences/' + response._id);
 
-				// Clear form fields
-				$scope.name = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
+					// Clear form fields
+					$scope.code = '';
+					$scope.description = '';
+				}, function(errorResponse) {
+					console.log('errorResponse: ',errorResponse);
+					$scope.error = errorResponse.data.message;
+				});
+			};
+		};
+
+		$scope.resetForm = function(){
+			// Clear form fields
+			$scope.dependence.code = '';
+			$scope.dependence.description = '';
+		};
+
+		function validForm(){
+			if ($scope.dependence && (!$scope.dependence.code || ($scope.dependence.code && $scope.dependence.code == ''))) {
+				$scope.error = 'Please set the code. Code is empty';
+				return false;
+			};
+			if ($scope.dependence && (!$scope.dependence.description || ($scope.dependence.description && $scope.dependence.description == ''))) {
+				$scope.error = 'Please set the description. Description is empty';
+				return false;
+			};
+			return true;
 		};
 
 		// Remove existing Dependence

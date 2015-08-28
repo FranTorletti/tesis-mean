@@ -1,23 +1,69 @@
-<section data-ng-controller="DependencesController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1>Edit Dependence</h1>
+<!-- START Template Container -->
+<div class="container-fluid" data-ng-controller="DependencesController">
+    <!-- Page Header -->
+    <div class="page-header page-header-block">
+        <div class="page-header-section">
+            <h4 class="title semibold">Dependences</h4>
+        </div>
+        <div class="page-header-section">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <ol class="breadcrumb breadcrumb-transparent nm">
+                    <li><a href="/#!/dependeces">Dependences</a></li>
+                    <li class="active">Create</li>
+                </ol>
+            </div>
+            <!--/ Toolbar -->
+        </div>
     </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="dependence.name" id="name" class="form-control" placeholder="Name" required>
-                    </div>
+    <!-- Page Header -->
+
+    <!-- START row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START panel -->
+            <div class="panel panel-default">
+                <!-- panel heading/header -->
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create Dependence</h3>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
+                <!--/ panel heading/header -->
+                <!-- panel body -->
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered" novalidate>
+                        <h4 class="text-primary mt0">Explicacion basica de que es una dependencia</h4>
+                        <p class="pb10">Individual form controls automatically receive some global styling. All textual for optimum spacing.</p>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" data-ng-model="dependence.code">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" rows="3" data-ng-model="dependence.description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" data-ng-show="error">
+                            <div class="col-sm-9 col-sm-offset-9 text-danger">
+                                <strong data-ng-bind="error"></strong>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="form-group no-border">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button ng-click="update()" class="btn btn-primary">Submit</button>
+                                    <button ng-click="resetForm()" class="btn btn-danger">Reset Form</button>
+                                </div>
+                            </div> 
+                        </div>
+                    </form>
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
-        </form>
+                <!-- panel body -->
+            </div>
+            <!--/ END form panel -->
+        </div>
     </div>
-</section>
+    <!--/ END row -->
+</div>

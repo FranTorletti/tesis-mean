@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://admin:12345678@ds035643.mongolab.com:35643/recursos' || 'localhost') + '/tesis-mean',
+	db: 'mongodb://admin:12345678@ds035643.mongolab.com:35643/recursos',
 	assets: {
 		lib: {
 			css: [

@@ -13,6 +13,7 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
 	var dependence = new Dependence(req.body);
+	
 	dependence.user = req.user;
 
 	dependence.save(function(err) {
@@ -100,7 +101,7 @@ exports.dependenceByID = function(req, res, next, id) {
  * Dependence authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.dependence.user.id !== req.user.id) {
+	if (req.user.roles.indexOf('admin') == -1) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();

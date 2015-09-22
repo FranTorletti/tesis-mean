@@ -1,4 +1,4 @@
-<section data-ng-controller="DependencesController" data-ng-init="find()">
+<section
     <div class="page-header">
         <h1>Dependences</h1>
     </div>
@@ -17,3 +17,113 @@
     	No Dependences yet, why don't you <a href="/#!/dependences/create">create one</a>?
     </div>
 </section>
+<!-- START Template Container -->
+<div class="container-fluid" data-ng-controller="DependencesController" data-ng-init="find()">
+    <!-- Page Header -->
+    <div class="page-header page-header-block">
+        <div class="page-header-section">
+            <h4 class="title semibold">Dependences</h4>
+        </div>
+        <div class="page-header-section">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <ol class="breadcrumb breadcrumb-transparent nm">
+                    <li><a href="/#!/dependeces">Dependences</a></li>
+                </ol>
+            </div>
+            <!--/ Toolbar -->
+        </div>
+    </div>
+    <!-- Page Header -->
+    <!-- START row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START panel -->
+            <div class="panel panel-primary">
+                <!-- panel heading/header -->
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-table22"></i></span>Dependences</h3>
+                    <!-- panel toolbar -->
+                    <div class="panel-toolbar text-right">
+                        <!-- option -->
+                        <div class="option">
+                            <button class="btn up" data-toggle="panelcollapse"><i class="arrow"></i></button>
+                        </div>
+                        <!--/ option -->
+                    </div>
+                    <!--/ panel toolbar -->
+                </div>
+                <!--/ panel heading/header -->
+                <!-- panel toolbar wrapper -->
+                <div class="panel-toolbar-wrapper pl0 pt5 pb5">
+                    <div class="panel-toolbar pl10">
+                        <div class="checkbox custom-checkbox pull-left">  
+                            <input type="checkbox" id="customcheckbox-one1" data-ng-click="checkAll()" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="allChecked">
+                            <label for="customcheckbox-one1">&nbsp;&nbsp;Select all</label>
+                        </div>
+                    </div>
+                    <div class="panel-toolbar text-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-default"><i class="ico-file-download2"></i></button>
+                        </div>
+
+                        <button type="button" data-ng-click="removeChecked()" class="btn btn-sm btn-danger"><i class="ico-remove3"></i></button>
+                    </div>
+                </div>
+                <!--/ panel toolbar wrapper -->
+
+                <!-- panel body with collapse capabale -->
+                <div class="table-responsive panel-collapse pull out">
+                    <table class="table table-bordered table-hover" id="table1">
+                        <thead>
+                            <tr>
+                                <th width="3%" class="text-center"><i class="ico-long-arrow-down"></i></th>
+                                <th width="27%">Code</th>
+                                <th width="55%">Description</th>
+                                <th width="15%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="dependence in dependences">
+                                <td>
+                                    <div class="checkbox custom-checkbox nm">  
+                                        <input type="checkbox" id="customcheckbox-one1" data-ng-click="checked(dependence)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="dependence.checked">
+                                        <label for="customcheckbox-one1"></label>   
+                                    </div>
+                                </td>
+                                <td>{{dependence.code}}</td>
+                                <td>{{dependence.description}}</td>
+                                <td class="text-center">
+                                    <!-- button toolbar -->
+                                    <div class="toolbar">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-default">Action</button>
+                                            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                    <a href="javascript:void(0);"><i class="icon ico-pencil"></i>Update</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="text-danger">
+                                                        <i class="icon ico-remove3"></i>
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--/ button toolbar -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--/ panel body with collapse capabale -->
+            </div>
+        </div>
+    </div>
+    <!--/ END row -->
+</div>

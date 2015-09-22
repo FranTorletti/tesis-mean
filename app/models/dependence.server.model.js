@@ -16,7 +16,7 @@ var DependenceSchema = new Schema({
 		required: 'Please fill Dependence code',
 		trim: true
 	},
-	descrition: {
+	description: {
 		type: String,
 		default: '',
 		required: 'Please fill Dependence descrition'

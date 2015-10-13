@@ -16,7 +16,7 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 
 				// Redirect after save
 				dependence.$save(function(response) {
-					$location.path('dependences/' + response._id);
+					$location.path('dependences');
 
 					// Clear form fields
 					$scope.code = '';

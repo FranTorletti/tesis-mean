@@ -12,6 +12,7 @@ var passport = require('passport'),
  * Module init function.
  */
 module.exports = function() {
+	console.log('##### passport');
 	// Serialize sessions
 	passport.serializeUser(function(user, done) {
 		done(null, user.id);

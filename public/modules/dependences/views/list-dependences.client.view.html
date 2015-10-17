@@ -1,22 +1,3 @@
-<section
-    <div class="page-header">
-        <h1>Dependences</h1>
-    </div>
-    <div class="list-group">
-        <a data-ng-repeat="dependence in dependences" data-ng-href="#!/dependences/{{dependence._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="dependence.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="dependence.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="dependence.name"></h4>
-        </a>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!dependences.$resolved || dependences.length">
-    	No Dependences yet, why don't you <a href="/#!/dependences/create">create one</a>?
-    </div>
-</section>
 <!-- START Template Container -->
 <div class="container-fluid" data-ng-controller="DependencesController" data-ng-init="find()">
     <!-- Page Header -->
@@ -58,7 +39,7 @@
                 <div class="panel-toolbar-wrapper pl0 pt5 pb5">
                     <div class="panel-toolbar pl10">
                         <div class="checkbox custom-checkbox pull-left">  
-                            <input type="checkbox" id="customcheckbox-one1" data-ng-click="checkAll()" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="allChecked">
+                            <input type="checkbox" id="customcheckbox-one2" data-ng-click="checkAll()" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="allChecked">
                             <label for="customcheckbox-one1">&nbsp;&nbsp;Select all</label>
                         </div>
                     </div>
@@ -87,8 +68,8 @@
                             <tr data-ng-repeat="dependence in dependences">
                                 <td>
                                     <div class="checkbox custom-checkbox nm">  
-                                        <input type="checkbox" id="customcheckbox-one1" data-ng-click="checked(dependence)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="dependence.checked">
-                                        <label for="customcheckbox-one1"></label>   
+                                        <input type="checkbox" id="{{dependence._id}}" data-ng-click="checked(dependence)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="dependence.checked">
+                                        <label for="{{dependence._id}}"></label>   
                                     </div>
                                 </td>
                                 <td>{{dependence.code}}</td>

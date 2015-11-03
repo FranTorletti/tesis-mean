@@ -5,19 +5,15 @@ angular.module('dependences').config(['$stateProvider',
 	function($stateProvider) {
 		// Dependences state routing
 		$stateProvider.
-		state('listDependences', {
+		state('list-dependence', {
 			url: '/dependences',
 			templateUrl: 'modules/dependences/views/list-dependences.client.view.html'
 		}).
-		state('createDependence', {
+		state('create-dependence', {
 			url: '/dependences/create',
 			templateUrl: 'modules/dependences/views/create-dependence.client.view.html'
 		}).
-		state('viewDependence', {
-			url: '/dependences/:dependenceId',
-			templateUrl: 'modules/dependences/views/view-dependence.client.view.html'
-		}).
-		state('editDependence', {
+		state('edit-dependence', {
 			url: '/dependences/:dependenceId/edit',
 			templateUrl: 'modules/dependences/views/edit-dependence.client.view.html'
 		});

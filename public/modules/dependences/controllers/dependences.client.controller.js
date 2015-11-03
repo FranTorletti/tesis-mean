@@ -4,7 +4,9 @@
 angular.module('dependences').controller('DependencesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Dependences',
 	function($scope, $stateParams, $location, Authentication, Dependences) {
 		$scope.authentication = Authentication;
+		// vars
 		$scope.allChecked = false;
+
 		// Create new Dependence
 		$scope.create = function() {
 			if (validForm()) {
@@ -19,49 +21,14 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 					$location.path('dependences');
 
 					// Clear form fields
-					$scope.code = '';
-					$scope.description = '';
+					$scope.resetForm();
 				}, function(errorResponse) {
-					console.log('errorResponse: ',errorResponse);
 					$scope.error = errorResponse.data.message;
 				});
 			};
 		};
 
-		$scope.resetForm = function(){
-			// Clear form fields
-			$scope.dependence.code = '';
-			$scope.dependence.description = '';
-		};
-
-		function validForm(){
-			if (!$scope.dependence || ($scope.dependence && $scope.dependence.code == '')) {
-				$scope.error = 'Please set the code. Code is empty';
-				return false;
-			};
-			if (!$scope.dependence  || ($scope.dependence && $scope.dependence.description == '')) {
-				$scope.error = 'Please set the description. Description is empty';
-				return false;
-			};
-			return true;
-		};
-
-		$scope.checked = function(dependence) {
-			if (typeof dependence.checked == "undefined" || !dependence.checked) {
-				dependence.checked = true;
-			} else {
-				dependence.checked = false;
-			}
-		}
-
-		$scope.checkAll = function() {
-			var value = !$scope.allChecked; 
-			//change value checked
-			for (var i = $scope.dependences.length - 1; i >= 0; i--) {
-				$scope.dependences[i].checked = value;
-			};
-		};
-
+		// Remove Dependences selected
 		$scope.removeChecked = function() {
 			var foundChecked = false;
 			for (var i in $scope.dependences) {
@@ -73,7 +40,6 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 					foundChecked = true;
 				}
 			}
-			console.log('found checked: ',foundChecked);
 		};
 
 		// Remove existing Dependence
@@ -89,13 +55,15 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 
 		// Update existing Dependence
 		$scope.update = function() {
-			var dependence = $scope.dependence;
+			if (validForm()) {
+				var dependence = $scope.dependence;
 
-			dependence.$update(function() {
-				$location.path('dependences/' + dependence._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
+				dependence.$update(function() {
+					$location.path('dependences');
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+				});
+			};
 		};
 
 		// Find a list of Dependences
@@ -108,6 +76,43 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 			$scope.dependence = Dependences.get({ 
 				dependenceId: $stateParams.dependenceId
 			});
+		};
+
+		// Clear form fields
+		$scope.resetForm = function(){
+			$scope.dependence.code = '';
+			$scope.dependence.description = '';
+		};
+
+		// Check dependence
+		$scope.checked = function(dependence) {
+			if (typeof dependence.checked == "undefined" || !dependence.checked) {
+				dependence.checked = true;
+			} else {
+				dependence.checked = false;
+			}
+		}
+
+		// Check all dependence
+		$scope.checkAll = function() {
+			var value = !$scope.allChecked; 
+			//change value checked
+			for (var i = $scope.dependences.length - 1; i >= 0; i--) {
+				$scope.dependences[i].checked = value;
+			};
+		};
+
+		// Valid form to send
+		function validForm(){
+			if (!$scope.dependence || ($scope.dependence && $scope.dependence.code == '')) {
+				$scope.error = 'Please set the code. Code is empty';
+				return false;
+			};
+			if (!$scope.dependence  || ($scope.dependence && $scope.dependence.description == '')) {
+				$scope.error = 'Please set the description. Description is empty';
+				return false;
+			};
+			return true;
 		};
 	}
 ]);

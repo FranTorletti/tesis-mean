@@ -4,39 +4,54 @@
 angular.module('resource-origins').controller('ResourceOriginsController', ['$scope', '$stateParams', '$location', 'Authentication', 'ResourceOrigins',
 	function($scope, $stateParams, $location, Authentication, ResourceOrigins) {
 		$scope.authentication = Authentication;
+		// vars
+		$scope.allChecked = false;
 
 		// Create new Resource origin
 		$scope.create = function() {
-			// Create new Resource origin object
-			var resourceOrigin = new ResourceOrigins ({
-				name: this.name
-			});
+			if (validForm()) {
+				// Create new Resource origin object
+				var resourceOrigin = new ResourceOrigins ({
+					name: this.name,
+					description: this.description,
+					note: this.note
+				});
 
-			// Redirect after save
-			resourceOrigin.$save(function(response) {
-				$location.path('resource-origins/' + response._id);
+				// Redirect after save
+				resourceOrigin.$save(function(response) {
+					$location.path('resource-origins');
 
-				// Clear form fields
-				$scope.name = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
+					// Clear form fields
+					$scope.resetForm();
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+				});
+			};
+		};
+
+		// Remove Dependences selected
+		$scope.removeChecked = function() {
+			var foundChecked = false;
+			for (var i in $scope.resourceOrigins) {
+				if ($scope.resourceOrigins[i].checked) {
+					//remove element
+					$scope.resourceOrigins[i].$remove();
+					//remove element of the list
+					$scope.resourceOrigins.splice(i, 1);
+					foundChecked = true;
+				}
+			}
 		};
 
 		// Remove existing Resource origin
 		$scope.remove = function(resourceOrigin) {
-			if ( resourceOrigin ) { 
-				resourceOrigin.$remove();
+			resourceOrigin.$remove();
 
-				for (var i in $scope.resourceOrigins) {
-					if ($scope.resourceOrigins [i] === resourceOrigin) {
-						$scope.resourceOrigins.splice(i, 1);
-					}
+			// remove of the list
+			for (var i in $scope.resourceOrigins) {
+				if ($scope.resourceOrigins[i]._id === resourceOrigin._id) {
+					$scope.resourceOrigins.splice(i, 1);
 				}
-			} else {
-				$scope.resourceOrigin.$remove(function() {
-					$location.path('resource-origins');
-				});
 			}
 		};
 
@@ -61,6 +76,29 @@ angular.module('resource-origins').controller('ResourceOriginsController', ['$sc
 			$scope.resourceOrigin = ResourceOrigins.get({ 
 				resourceOriginId: $stateParams.resourceOriginId
 			});
+		};
+
+		// Clear form fields
+		$scope.resetForm = function(){
+			$scope.resource_origins.code = '';
+			$scope.resource_origins.description = '';
+			$scope.resource_origins.note = '';
+		};
+
+		function validForm(){
+			if (!$scope.resource_origins || ($scope.resource_origins && $scope.resource_origins.code == '')) {
+				$scope.error = 'Please set the code. Code is empty';
+				return false;
+			};
+			if (!$scope.resource_origins  || ($scope.resource_origins && $scope.resource_origins.description == '')) {
+				$scope.error = 'Please set the description. Description is empty';
+				return false;
+			};
+			if (!$scope.resource_origins  || ($scope.resource_origins && $scope.resource_origins.note == '')) {
+				$scope.error = 'Please set the Note. Note is empty';
+				return false;
+			};
+			return true;
 		};
 	}
 ]);

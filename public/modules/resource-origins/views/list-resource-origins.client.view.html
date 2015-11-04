@@ -9,7 +9,7 @@
             <!-- Toolbar -->
             <div class="toolbar">
                 <ol class="breadcrumb breadcrumb-transparent nm">
-                    <li><a href="/#!/resource-origins">Resource Origins</a></li>
+                    <li><a ui-sref="list-resource-origins">Resource Origins</a></li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -39,8 +39,8 @@
                 <div class="panel-toolbar-wrapper pl0 pt5 pb5">
                     <div class="panel-toolbar pl10">
                         <div class="checkbox custom-checkbox pull-left">  
-                            <input type="checkbox" id="customcheckbox-one2" data-ng-click="checkAll()" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="allChecked">
-                            <label for="customcheckbox-one1">&nbsp;&nbsp;Select all</label>
+                            <input type="checkbox" id="customcheckbox-one0" value="1" data-toggle="checkall" data-target="#table1" ng-click="checkAll()">  
+                            <label for="customcheckbox-one0">&nbsp;&nbsp;Select all</label>  
                         </div>
                     </div>
                     <div class="panel-toolbar text-right">
@@ -66,16 +66,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="resource_origins in resources_origins">
+                            <tr data-ng-repeat="resource_origin in resource_origins">
                                 <td>
                                     <div class="checkbox custom-checkbox nm">  
-                                        <input type="checkbox" id="{{resource_origins._id}}" data-ng-click="checked(resource_origins)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="resource_origins.checked">
-                                        <label for="{{resource_origins._id}}"></label>   
+                                        <input type="checkbox" id="{{resource_origin._id}}" data-ng-click="checked(resource_origin)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="resource_origin.checked">
+                                        <label for="{{resource_origin._id}}"></label>   
                                     </div>
                                 </td>
-                                <td>{{resource_origins.code}}</td>
-                                <td>{{resource_origins.description}}</td>
-                                <td>{{resource_origins.note}}</td>
+                                <td>{{resource_origin.code}}</td>
+                                <td>{{resource_origin.description}}</td>
+                                <td>{{resource_origin.note}}</td>
                                 <td class="text-center">
                                     <!-- button toolbar -->
                                     <div class="toolbar">
@@ -86,11 +86,11 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-right">
                                                 <li>
-                                                    <a href="javascript:void(0);"><i class="icon ico-pencil"></i>Update</a>
+                                                    <a ui-sref="edit-resource-origin({resourceOriginId: resource_origin._id})"><i class="icon ico-pencil"></i>Update</a>
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li>
-                                                    <a href="javascript:void(0);" class="text-danger">
+                                                    <a href="" ng-click="remove(resource_origin)" class="text-danger">
                                                         <i class="icon ico-remove3"></i>
                                                         Delete
                                                     </a>

@@ -16,10 +16,9 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 					description: this.dependence.description
 				});
 
-				// Redirect after save
 				dependence.$save(function(response) {
+					// Redirect after save
 					$location.path('dependences');
-
 					// Clear form fields
 					$scope.resetForm();
 				}, function(errorResponse) {

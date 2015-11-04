@@ -5,7 +5,7 @@ angular.module('service-types').config(['$stateProvider',
 	function($stateProvider) {
 		// Service types state routing
 		$stateProvider.
-		state('list-service-ypes', {
+		state('list-service-types', {
 			url: '/service-types',
 			templateUrl: 'modules/service-types/views/list-service-types.client.view.html'
 		}).

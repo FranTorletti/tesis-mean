@@ -103,11 +103,11 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 
 		// Valid form to send
 		function validForm(){
-			if (!$scope.dependence || ($scope.dependence && $scope.dependence.code == '')) {
+			if (!$scope.dependence || !$scope.dependence.description || $scope.dependence.code == '') {
 				$scope.error = 'Please set the code. Code is empty';
 				return false;
 			};
-			if (!$scope.dependence  || ($scope.dependence && $scope.dependence.description == '')) {
+			if (!$scope.dependence  || !$scope.dependence.description || $scope.dependence.description == '') {
 				$scope.error = 'Please set the description. Description is empty';
 				return false;
 			};

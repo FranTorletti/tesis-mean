@@ -19,7 +19,7 @@ var ResourceOriginSchema = new Schema({
 	description: {
 		type: String,
 		default: '',
-		required: 'Please fill Resource origin descrition'
+		required: 'Please fill Resource origin description'
 	},
 	note: {
 		type: String,

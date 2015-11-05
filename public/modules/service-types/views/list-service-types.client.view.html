@@ -3,13 +3,13 @@
     <!-- Page Header -->
     <div class="page-header page-header-block">
         <div class="page-header-section">
-            <h4 class="title semibold">Service Types</h4>
+            <h4 class="title semibold">Services Types</h4>
         </div>
         <div class="page-header-section">
             <!-- Toolbar -->
             <div class="toolbar">
                 <ol class="breadcrumb breadcrumb-transparent nm">
-                    <li><a href="/#!/service-types">Service Types</a></li>
+                    <li><a ui-sref="list-service-type">Services Types</a></li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -23,7 +23,7 @@
             <div class="panel panel-primary">
                 <!-- panel heading/header -->
                 <div class="panel-heading">
-                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-table22"></i></span>Service Types</h3>
+                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-table22"></i></span>Services Types</h3>
                     <!-- panel toolbar -->
                     <div class="panel-toolbar text-right">
                         <!-- option -->
@@ -39,8 +39,8 @@
                 <div class="panel-toolbar-wrapper pl0 pt5 pb5">
                     <div class="panel-toolbar pl10">
                         <div class="checkbox custom-checkbox pull-left">  
-                            <input type="checkbox" id="customcheckbox-one1" data-ng-click="checkAll()" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="allChecked">
-                            <label for="customcheckbox-one1">&nbsp;&nbsp;Select all</label>
+                            <input type="checkbox" id="customcheckbox-one0" value="1" data-toggle="checkall" data-target="#table1" ng-click="checkAll()">  
+                            <label for="customcheckbox-one0">&nbsp;&nbsp;Select all</label>  
                         </div>
                     </div>
                     <div class="panel-toolbar text-right">
@@ -59,25 +59,26 @@
                         <thead>
                             <tr>
                                 <th width="3%" class="text-center"><i class="ico-long-arrow-down"></i></th>
-                                <th width="27%">Code</th>
-                                <th width="55%">Description</th>
-                                <th width="55%">Note</th>
-                                <th width="55%">Retention of Faculty</th>
-                                <th width="15%">Retention of University</th>
+                                <th width="7%">Code</th>
+                                <th width="25%">Description</th>
+                                <th width="30%">Note</th>
+                                <th width="10%">Retention of Faculty</th>
+                                <th width="10%">Retention of University</th>
+                                <th width="15%"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="service_type in service_types">
+                            <tr data-ng-repeat="service_type in services_types">
                                 <td>
                                     <div class="checkbox custom-checkbox nm">  
-                                        <input type="checkbox" id="customcheckbox-one1" data-ng-click="checked(dependence)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="dependence.checked">
-                                        <label for="customcheckbox-one1"></label>   
+                                        <input type="checkbox" id="{{service_type._id}}" data-ng-click="checked(service_type)" data-toggle="selectrow" data-target="tr" data-contextual="success" data-ng-model="service_type.checked">
+                                        <label for="{{service_type._id}}"></label>   
                                     </div>
                                 </td>
                                 <td>{{service_type.code}}</td>
                                 <td>{{service_type.description}}</td>
                                 <td>{{service_type.note}}</td>
-                                <td>{{service_type.faculty}}</td>
+                                <td>{{service_type.retention_of_faculty}}</td>
                                 <td>{{service_type.retention_of_university}}</td>
                                 <td class="text-center">
                                     <!-- button toolbar -->
@@ -89,11 +90,11 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-right">
                                                 <li>
-                                                    <a href="javascript:void(0);"><i class="icon ico-pencil"></i>Update</a>
+                                                    <a ui-sref="edit-service-type({serviceTypeId: service_type._id})"><i class="icon ico-pencil"></i>Update</a>
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li>
-                                                    <a href="javascript:void(0);" class="text-danger">
+                                                    <a href="" ng-click="remove(service_type)" class="text-danger">
                                                         <i class="icon ico-remove3"></i>
                                                         Delete
                                                     </a>

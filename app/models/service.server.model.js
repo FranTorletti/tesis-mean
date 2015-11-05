@@ -21,10 +21,10 @@ var ServiceSchema = new Schema({
 		default: '',
 		required: 'Please fill Service name'
 	},
-	descrition: {
+	description: {
 		type: String,
 		default: '',
-		required: 'Please fill Service descrition'
+		required: 'Please fill Service description'
 	},
 	status : {
 		type: String,

@@ -16,10 +16,10 @@ var ServiceTypeSchema = new Schema({
 		required: 'Please fill Service Type code',
 		trim: true
 	},
-	descrition: {
+	description: {
 		type: String,
 		default: '',
-		required: 'Please fill Service Type descrition'
+		required: 'Please fill Service Type description'
 	},
 	note: {
 		type: String,

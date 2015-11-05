@@ -20,10 +20,10 @@ var TransactionSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	descrition: {
+	description: {
 		type: String,
 		default: '',
-		required: 'Please fill Transaction descrition'
+		required: 'Please fill Transaction description'
 	},
 	amount: {
 		type: Number,

@@ -16,10 +16,10 @@ var TransactionTypeSchema = new Schema({
 		required: 'Please fill Transaction type name',
 		trim: true
 	},
-	descrition: {
+	description: {
 		type: String,
 		default: '',
-		required: 'Please fill TransactionType descrition'
+		required: 'Please fill TransactionType description'
 	},
 	type : {
 		type: String,

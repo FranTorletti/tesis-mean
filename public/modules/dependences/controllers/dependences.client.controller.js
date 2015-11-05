@@ -103,7 +103,7 @@ angular.module('dependences').controller('DependencesController', ['$scope', '$s
 
 		// Valid form to send
 		function validForm(){
-			if (!$scope.dependence || !$scope.dependence.description || $scope.dependence.code == '') {
+			if (!$scope.dependence || !$scope.dependence.code || $scope.dependence.code == '') {
 				$scope.error = 'Please set the code. Code is empty';
 				return false;
 			};

@@ -12,9 +12,10 @@ var mongoose = require('mongoose'),
  * Create a Service
  */
 exports.create = function(req, res) {
+	console.log('req.body: ',req.body);
 	var service = new Service(req.body);
-	service.user = req.user;
-
+	//service.user = req.user;
+	console.log('service: ',service);
 	service.save(function(err) {
 		if (err) {
 			return res.status(400).send({
